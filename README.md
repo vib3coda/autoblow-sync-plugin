@@ -50,8 +50,8 @@ Add this repository as a plugin source in StashApp:
 1. Go to Settings -> Plugins.
 2. Click Sources -> Add Source.
 4. Enter:
-Name: AutoblowSync
-URL:
+   - Name: AutoblowSync
+   - URL: https://raw.githubusercontent.com/vib3coda/autoblow-sync-plugin/main/index.yml
 5. Install the AutoblowSync plugin from the Available tab.
 
 
