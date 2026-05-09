@@ -1,0 +1,8 @@
+- id: autoblow_sync
+  name: AutoblowSync
+  metadata:
+    description: Synchronizes Funscripts with the Autoblow device
+  version: v2.1
+  date: 2026-05-09 12:28:16 +0000
+  path: https://github.com/vib3coda/autoblow-sync-plugin/releases/download/v2.1/autoblow-sync.zip
+  sha256: DEIN_HASH_HIER

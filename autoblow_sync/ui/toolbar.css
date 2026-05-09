@@ -1,0 +1,170 @@
+.ab-toolbar {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: linear-gradient(180deg, rgba(40,40,46,0.96), rgba(24,24,28,0.96));
+  color: #eee;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  user-select: none;
+}
+
+.ab-toolbar .ab-handle {
+  cursor: grab;
+  padding: 0 4px;
+  opacity: 0.5;
+  font-size: 16px;
+  line-height: 1;
+}
+.ab-toolbar .ab-handle:hover { opacity: 0.9; }
+.ab-toolbar.ab-dragging { opacity: 0.92; }
+.ab-toolbar.ab-dragging .ab-handle { cursor: grabbing; }
+
+.ab-toolbar .ab-btn {
+  background: rgba(255,255,255,0.06);
+  color: #eee;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 5px 9px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  transition: background 0.15s, border-color 0.15s, transform 0.05s;
+}
+.ab-toolbar .ab-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.2);
+}
+.ab-toolbar .ab-btn:active { transform: translateY(1px); }
+
+.ab-toolbar .ab-select {
+  background: rgba(0,0,0,0.4);
+  color: #eee;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 4px 6px;
+  max-width: 180px;
+  font-size: 12px;
+  outline: none;
+}
+.ab-toolbar .ab-select:focus { border-color: #2ecc71; }
+
+.ab-toolbar .ab-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  min-width: 90px;
+  max-width: 180px;
+}
+.ab-toolbar .ab-status-text {
+  font-size: 11px;
+  color: #bbb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.ab-toolbar .ab-led {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #888;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.4) inset;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.ab-toolbar .ab-led[data-state="ok"] {
+  background: #2ecc71;
+  box-shadow: 0 0 6px #2ecc71, 0 0 0 2px rgba(0,0,0,0.4) inset;
+}
+.ab-toolbar .ab-led[data-state="syncing"] {
+  background: #f1c40f;
+  box-shadow: 0 0 6px #f1c40f, 0 0 0 2px rgba(0,0,0,0.4) inset;
+  animation: ab-pulse 1.2s ease-in-out infinite;
+}
+.ab-toolbar .ab-led[data-state="idle"]  { background: #888; }
+.ab-toolbar .ab-led[data-state="error"] {
+  background: #e74c3c;
+  box-shadow: 0 0 6px #e74c3c, 0 0 0 2px rgba(0,0,0,0.4) inset;
+}
+
+@keyframes ab-pulse {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0.4; }
+}
+
+
+.ab-toolbar.ab-collapsed > :not(.ab-handle):not(.ab-status):not(.ab-min) {
+  display: none;
+}
+
+.ab-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 34px;
+  height: 18px;
+  flex-shrink: 0;
+  align-self: center;
+  margin-top: 8px;
+}
+.ab-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.ab-switch .ab-slider {
+  position: absolute;
+  inset: 0;
+  background: #555;
+  border-radius: 18px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.ab-switch .ab-slider::before {
+  content: "";
+  position: absolute;
+  width: 12px; height: 12px;
+  left: 3px; top: 3px;
+  background: #eee;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+.ab-switch input:checked + .ab-slider { background: #2ecc71; }
+.ab-switch input:checked + .ab-slider::before { transform: translateX(16px); }
+
+/* Mobile */
+@media (max-width: 767px) {
+  .ab-toolbar {
+    top: auto !important;
+    bottom: 0px;
+    left: 0 !important;
+    right: 0 !important;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding: 8px;
+    gap: 6px;
+    justify-content: space-between;
+  }
+  .ab-toolbar .ab-handle { display: none; }
+  .ab-toolbar .ab-min    { display: none; }
+  .ab-toolbar .ab-select { flex: 1; max-width: none; min-width: 0; }
+  .ab-toolbar .ab-status { min-width: 60px; max-width: 110px; }
+}
