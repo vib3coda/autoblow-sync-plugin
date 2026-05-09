@@ -53,6 +53,8 @@ Add this repository as a plugin source in StashApp:
    - Name: AutoblowSync
    - URL: https://raw.githubusercontent.com/vib3coda/autoblow-sync-plugin/main/index.yml
 5. Install the AutoblowSync plugin from the Available tab.
+6. Go down to the Plugin and enter your **Autoblow Device token** and **Autoblow Server**.
+7. Open any scene that has a funscript — the toolbar appears and sync starts automatically.
 
 
 ## Manual Installation
