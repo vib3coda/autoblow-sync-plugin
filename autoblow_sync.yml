@@ -1,0 +1,33 @@
+name: AutoblowSync
+description: Synchronizes Funscripts with the Autoblow device
+version: 2.1
+url: "https://github.com/vib3coda/CommunityScripts/tree/autoblow_sync/plugins/autoblow_sync"
+
+exec:
+  - python3
+  - "{pluginDir}/control.py"
+
+ui:
+  javascript:
+    - ui/toolbar.js
+  css:
+    - ui/toolbar.css
+
+tasks:
+  - name: Start Backend
+    description: Manually start the Autoblow sync backend
+    defaultArgs:
+      mode: start
+  - name: Stop Backend
+    description: Manually stops the Autoblow sync backend
+    defaultArgs:
+      mode: stop
+
+settings:
+  device_token:
+    type: STRING
+    displayName: "Autoblow Device Token"
+  server_url:
+    type: STRING
+    displayName: "Autoblow Server"
+    description: "e.g. https://eu-central-1.autoblowapi.com, us-east-1, us-west-1"
