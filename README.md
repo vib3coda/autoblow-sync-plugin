@@ -52,7 +52,7 @@ Add this repository as a plugin source in StashApp:
 4. Enter:
 Name: AutoblowSync
 URL:
-5. install the AutoblowSync plugin from the Available tab.
+5. Install the AutoblowSync plugin from the Available tab.
 
 
 ## Manual Installation
